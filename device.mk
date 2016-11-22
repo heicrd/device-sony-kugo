@@ -12,6 +12,9 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
+TARGET_SCREEN_HEIGHT := 1280
+TARGET_SCREEN_WIDTH := 720
+
 DEVICE_PACKAGE_OVERLAYS += \
     device/sony/kugo/overlay
 
@@ -52,10 +55,6 @@ PRODUCT_PACKAGES += \
     fingerprintd \
     fingerprint.kugo
 
-# NFC config
-PRODUCT_PACKAGES += \
-    nfc_nci.kugo
-
 # Telephony Packages (AOSP)
 PRODUCT_PACKAGES += \
     InCallUI \
@@ -68,6 +67,8 @@ PRODUCT_AAPT_PREF_CONFIG := xhdpi
 PRODUCT_PROPERTY_OVERRIDES := \
     ro.sf.lcd_density=320 \
     ro.usb.pid_suffix=1E8
+
+$(call inherit-product, frameworks/native/build/phone-xhdpi-2048-dalvik-heap.mk)
 
 # Inherit from those products. Most specific first.
 $(call inherit-product, device/sony/loire/platform.mk)
