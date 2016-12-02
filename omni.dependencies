@@ -1,0 +1,14 @@
+[
+  {
+    "remote":       "omnirom",
+    "repository":   "android_device_sony_loire-common",
+    "target_path":  "device/sony/loire-common",
+    "revision":     "android-6.0"
+  },
+  {
+    "remote":       "omnirom",
+    "repository":   "android_packages_apps_SnapdragonCamera",
+    "target_path":  "packages/apps/SnapdragonCamera",
+    "revision":     "android-6.0"
+  }
+]
