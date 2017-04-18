@@ -15,18 +15,27 @@
 TARGET_SCREEN_HEIGHT := 1280
 TARGET_SCREEN_WIDTH := 720
 
+# Device path
+DEVICE_PATH := device/sony/kugo
+
 DEVICE_PACKAGE_OVERLAYS += \
-    device/sony/kugo/overlay
+    $(DEVICE_PATH)/overlay
 
 PRODUCT_COPY_FILES := \
-    device/sony/kugo/rootdir/system/etc/audio_policy.conf:system/etc/audio_policy.conf \
-    device/sony/kugo/rootdir/system/etc/BCM4345.hcd:system/etc/firmware/BCM43xx.hcd \
-    device/sony/kugo/rootdir/system/etc/wifi/bcmdhd.cal:system/etc/wifi/bcmdhd.cal \
-    device/sony/kugo/rootdir/system/etc/sensors/sensor_def_qcomdev.conf:system/etc/sensors/sensor_def_qcomdev.conf \
-    device/sony/kugo/rootdir/system/etc/thermanager.xml:system/etc/thermanager.xml \
-    device/sony/kugo/rootdir/system/etc/libnfc-brcm.conf:system/etc/libnfc-brcm.conf \
-    device/sony/kugo/rootdir/system/etc/libnfc-nxp.conf:system/etc/libnfc-nxp.conf \
-    device/sony/kugo/rootdir/system/etc/mixer_paths.xml:system/etc/mixer_paths.xml
+    $(DEVICE_PATH)/rootdir/system/etc/audio_policy.conf:system/etc/audio_policy.conf \
+    $(DEVICE_PATH)/rootdir/system/etc/BCM4345.hcd:system/etc/firmware/BCM43xx.hcd \
+    $(DEVICE_PATH)/rootdir/system/etc/wifi/bcmdhd.cal:system/etc/wifi/bcmdhd.cal \
+    $(DEVICE_PATH)/rootdir/system/etc/sensors/sensor_def_qcomdev.conf:system/etc/sensors/sensor_def_qcomdev.conf \
+    $(DEVICE_PATH)/rootdir/system/etc/thermanager.xml:system/etc/thermanager.xml \
+    $(DEVICE_PATH)/rootdir/system/etc/libnfc-brcm.conf:system/etc/libnfc-brcm.conf \
+    $(DEVICE_PATH)/rootdir/system/etc/libnfc-nxp.conf:system/etc/libnfc-nxp.conf \
+    $(DEVICE_PATH)/rootdir/system/etc/mixer_paths.xml:system/etc/mixer_paths.xml
+
+# Camera Configuration
+PRODUCT_COPY_FILES += \
+    $(DEVICE_PATH)/rootdir/system/etc/camera/camera_config.xml:system/etc/camera/camera_config.xml \
+    $(DEVICE_PATH)/rootdir/system/etc/camera/imx241_chromatix.xml:system/etc/camera/imx241_chromatix.xml \
+    $(DEVICE_PATH)/rootdir/system/etc/camera/imx300_chromatix.xml:system/etc/camera/imx300_chromatix.xml
 
 # Device Specific Permissions
 PRODUCT_COPY_FILES += \
@@ -73,3 +82,6 @@ $(call inherit-product, frameworks/native/build/phone-xhdpi-2048-dalvik-heap.mk)
 # Inherit from those products. Most specific first.
 $(call inherit-product, device/sony/loire/platform.mk)
 $(call inherit-product, vendor/sony/loire-kugo/kugo-vendor.mk)
+
+# copy wlan firmware
+$(call inherit-product-if-exists, vendor/broadcom/wlan/bcmdhd/firmware/bcm4345/device-bcm.mk)
