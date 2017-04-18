@@ -18,7 +18,7 @@ $(call inherit-product, vendor/cm/config/common_full_phone.mk)
 
 $(call inherit-product, device/sony/kugo/device.mk)
 
-PRODUCT_NAME := cm_kugo
+PRODUCT_NAME := lineage_kugo
 PRODUCT_DEVICE := kugo
 PRODUCT_MODEL := F5321
 PRODUCT_BRAND := Sony

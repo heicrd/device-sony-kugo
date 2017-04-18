@@ -14,5 +14,5 @@
 # limitations under the License.
 #
 
-add_lunch_combo cm_kugo-userdebug
-add_lunch_combo cm_kugo-eng
+add_lunch_combo lineage_kugo-userdebug
+add_lunch_combo lineage_kugo-eng
